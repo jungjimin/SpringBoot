@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.project.dao.DbMapper">
+
+    <!--쿠폰 리스트 조회  -->
+	<select id="selectCouponList" parameterType="com.springboot.project.vo.CouponList" resultType="java.util.HashMap">        
+        select coupon.id, coupon.email, coupon.coupon_no , coupon.regdate , ceil(coupon.tot_cnt<![CDATA[/]]>${rowCount}) as tot_page
+        from ( select id, email, coupon_no, regdate, ( select count(*) from couponlist ) as tot_cnt from couponlist ) coupon 
+        order by regdate
+        limit ${start}, ${end};        
+	</select>
+	
+    <!--쿠폰 생성  -->
+	<insert id="insertCoupon" parameterType="com.springboot.project.vo.Coupon">
+		insert into couponlist(email,coupon_no,regdate) values
+		(#{email},#{coupon_no},date_format(sysdate(), '%Y%m%d%H%i%s'))
+	</insert>
+	
+	<!--이메일 조회  -->
+	<select id="selectEmail" resultType="java.lang.Integer">
+		select count(*) from couponlist where email=#{email} 
+	</select>
+
+    <!--시퀀스 생성 (쿠폰번호에 사용)-->
+	<update id="updateSeq" > 
+		update id_generator set seq_currval=last_insert_id(seq_currval+1)
+	</update>
+	
+    <!--현재 시퀀스 조회 (쿠폰번호에 사용) -->
+	<select id="selectCurrentSeq" resultType="java.lang.Integer">
+		select last_insert_id()
+	</select>
+
+</mapper>
+
