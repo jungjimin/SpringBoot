@@ -58,8 +58,8 @@
 ## 웹 화면
 
 <div>
-<img width="200" src="https://user-images.githubusercontent.com/12581525/38097311-03c2c4ac-33b0-11e8-9ecd-b87622d2c8b2.png">
-<img width="200" src="https://user-images.githubusercontent.com/12581525/38097317-04b4a51a-33b0-11e8-8c3a-4ced5df8a7d6.png">
+<img width="400" src="https://user-images.githubusercontent.com/12581525/38097311-03c2c4ac-33b0-11e8-9ecd-b87622d2c8b2.png">
+<img width="400" src="https://user-images.githubusercontent.com/12581525/38097317-04b4a51a-33b0-11e8-8c3a-4ced5df8a7d6.png">
 </div>
 
 
